@@ -91,7 +91,7 @@ class _MyHomePageState extends State<MyHomePage> {
     socket.listen((data) {
       s = utf8.decode(data);
       print("Response:\n"+s.toString());
-      
+      pr.hide();
       // Close Please wait dialog
       showResult(context,s);
     },
