@@ -54,20 +54,24 @@ class _MyHomePageState extends State<MyHomePage> {
   );
     
     return Scaffold(
-      body: Column(
-        children: <Widget>[
-          Text("Starting Station : Huda City Center"),
-          Text("Ending Station : Guru Dronacharya"),
-          Text("Time : 09:45"),
-          RaisedButton(
-            onPressed: () async{
-              print("Button Clicked");
-              getConnection(context,pr);
-            },
-            child: Text("Book Ticket"),
-            ),
-        ], 
-        ),
+      body: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Text("Starting Station : Huda City Center"),
+            Text("Ending Station : Guru Dronacharya"),
+            Text("Time : 09:45"),
+            RaisedButton(
+              onPressed: () async{
+                print("Button Clicked");
+                getConnection(context,pr);
+              },
+              child: Text("Book Ticket"),
+              ),
+          ], 
+          ),
+      ),
       );
   }
   Future getConnection(context,pr)async{
