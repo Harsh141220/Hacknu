@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 class Content with ChangeNotifier {
   int point = 0;
   String start_line;
+  String indexs;
+  String indexe;
   String end_line;
   String start;
   String end;
@@ -33,6 +35,34 @@ class Content with ChangeNotifier {
     '1050',
     '1055',
   ];
+  List YL = [
+    'Huda City Centre',
+    'IIFCO Chowk',
+    'M G Road',
+    'Sikandarpur',
+    'Guru Dhronacharya',
+    'ArjanGarh',
+    'Ghitorni',
+    'Sultanpur',
+    'Chhatarpur',
+    'Qutub Minar',
+    'Saket',
+    'Malviya Nagar',
+    'Hauz Khas',
+    'Green Park',
+    'AIIMS',
+    'INA',
+    'Jorbagh',
+    'Lok Kalyan Marg',
+    'Udyog Bhavan',
+    'Central Secretariat',
+    'Patel Chowk',
+    'Rajiv Chowk',
+    'New Delhi',
+    'Chawri Bazar',
+    'Chandni Chowk',
+    'Kashmere Gate',
+  ];
   List Y = [
     'y01',
     'y02',
@@ -61,6 +91,7 @@ class Content with ChangeNotifier {
     'y25',
     'y26',
   ];
+
   List B = [
     'b01',
     'b02',
@@ -87,6 +118,35 @@ class Content with ChangeNotifier {
     'b23',
     'b24',
     'b25',
+    'b26'
+  ];
+  List BL = [
+    'Noida Electronic City',
+    'Sec-62',
+    'Sec-59',
+    'Sec-61',
+    'Sec-52',
+    'Sec-34',
+    'Noida City Centre',
+    'Golf Course',
+    'Botanical Garden',
+    'Sec 18',
+    'Sec 16',
+    'Sec 15',
+    'New Ashok Nagar',
+    'Mayur Vihar-1 EXT',
+    'Mayur Vihar-1',
+    'Akshardham',
+    'Yamuna Bank',
+    'Indraprastha',
+    'Supreme Court',
+    'Mandi House',
+    'Barakhamba',
+    'Rajiv Chowk',
+    'R.K.Ashram Marg',
+    'Jhandewala',
+    'Karol Bagh',
+    'Rajendra Place'
   ];
   List M = [
     'm01',
@@ -113,5 +173,33 @@ class Content with ChangeNotifier {
     'm22',
     'm23',
     'm24',
+    'm25'
+  ];
+  List ML = [
+    'Botanical Garden',
+    'Okhla Bird Sanctuary',
+    'Kalindi Kunj',
+    'J.V.Shaheen Bagh',
+    'Okhla Vihar',
+    'JM Islamia',
+    'Sukhdev Vihar',
+    'NSIC Okhla',
+    'Kalkaji Mandir',
+    'Nehru Enclave',
+    'Greater Kailash',
+    'Chirag Delhi',
+    'Panchsheel Park',
+    'Hauz Khas',
+    'I.I.T',
+    'R.K.Puram',
+    'Munirka',
+    'Vasant Vihar',
+    'Shankar Vihar',
+    'IGD Airport',
+    'Sadar Bazaar',
+    'Palam',
+    'Dashrathpuri',
+    'Dabri Mor',
+    'Janak Puri West'
   ];
 }

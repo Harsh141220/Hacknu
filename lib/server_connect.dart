@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     final prov = Provider.of<Content>(context);
-    body = "${prov.start},${prov.end},${prov.slot}";
+    body = "${prov.indexs},${prov.indexe},${prov.slot}";
     ProgressDialog pr = ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: true);
     pr.style(
@@ -59,11 +59,11 @@ class _MyHomePageState extends State<MyHomePage> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Text(
-              "Starting Station : " + prov.start,
+              "Starting Station : " + prov.indexs,
               style: TextStyle(fontSize: 25),
             ),
             Text(
-              "Ending Station : " + prov.end,
+              "Ending Station : " + prov.indexe,
               style: TextStyle(fontSize: 25),
             ),
             Text(

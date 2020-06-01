@@ -26,7 +26,7 @@ class Slots extends StatelessWidget {
                   color: Colors.black87,
                   width: w,
                   height: h * 0.45,
-                  padding: EdgeInsets.all(45),
+                  padding: EdgeInsets.symmetric(vertical: 40),
                   child: Column(
                     children: <Widget>[
                       Row(
@@ -37,7 +37,7 @@ class Slots extends StatelessWidget {
                             prov.start,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 30,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           ),
                           Icon(
@@ -49,7 +49,7 @@ class Slots extends StatelessWidget {
                             prov.end,
                             style: TextStyle(
                                 color: Colors.white,
-                                fontSize: 30,
+                                fontSize: 20,
                                 fontWeight: FontWeight.bold),
                           ),
                         ],

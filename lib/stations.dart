@@ -34,7 +34,7 @@ class Stations extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                   height: h,
-                  width: w * 0.3,
+                  width: w * 0.33,
                   child: ListView.builder(
                       itemCount: prov.Y.length,
                       itemBuilder: (ctx, i) {
@@ -43,14 +43,18 @@ class Stations extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15)),
                             child: ListTile(
                                 onTap: () {
-                                  prov.point == 0
-                                      ? prov.start = prov.Y[i]
-                                      : prov.end = prov.Y[i];
+                                  if (prov.point == 0) {
+                                    prov.start = prov.YL[i];
+                                    prov.indexs = prov.Y[i];
+                                  } else {
+                                    prov.end = prov.YL[i];
+                                    prov.indexe = prov.Y[i];
+                                  }
                                   Navigator.of(context)
                                       .pushReplacementNamed(Home.routename);
                                 },
                                 title: Text(
-                                  prov.Y[i],
+                                  prov.YL[i],
                                   textAlign: TextAlign.center,
                                 )));
                       }),
@@ -58,23 +62,27 @@ class Stations extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                   height: h,
-                  width: w * 0.3,
+                  width: w * 0.33,
                   child: ListView.builder(
-                      itemCount: prov.M.length,
+                      itemCount: prov.ML.length,
                       itemBuilder: (ctx, i) {
                         return Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             child: ListTile(
                                 onTap: () {
-                                  prov.point == 0
-                                      ? prov.start = prov.M[i]
-                                      : prov.end = prov.M[i];
+                                  if (prov.point == 0) {
+                                    prov.start = prov.ML[i];
+                                    prov.indexs = prov.M[i];
+                                  } else {
+                                    prov.end = prov.ML[i];
+                                    prov.indexe = prov.M[i];
+                                  }
                                   Navigator.of(context)
                                       .pushReplacementNamed(Home.routename);
                                 },
                                 title: Text(
-                                  prov.M[i],
+                                  prov.ML[i],
                                   textAlign: TextAlign.center,
                                 )));
                       }),
@@ -82,23 +90,27 @@ class Stations extends StatelessWidget {
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 30, horizontal: 10),
                   height: h,
-                  width: w * 0.3,
+                  width: w * 0.33,
                   child: ListView.builder(
-                      itemCount: prov.B.length,
+                      itemCount: prov.BL.length,
                       itemBuilder: (ctx, i) {
                         return Card(
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(15)),
                             child: ListTile(
                                 onTap: () {
-                                  prov.point == 0
-                                      ? prov.start = prov.B[i]
-                                      : prov.end = prov.B[i];
+                                  if (prov.point == 0) {
+                                    prov.start = prov.BL[i];
+                                    prov.indexs = prov.B[i];
+                                  } else {
+                                    prov.end = prov.BL[i];
+                                    prov.indexe = prov.B[i];
+                                  }
                                   Navigator.of(context)
                                       .pushReplacementNamed(Home.routename);
                                 },
                                 title: Text(
-                                  prov.B[i],
+                                  prov.BL[i],
                                   textAlign: TextAlign.center,
                                 )));
                       }),
