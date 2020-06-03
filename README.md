@@ -1,8 +1,4 @@
-# delhimetro
-
-A new Flutter project.
-
-## Getting Started
+# Getting Started
 
 This project is a starting point for a Flutter application.
 
@@ -105,11 +101,10 @@ NOTE: Limited station only exist for testing purpose, so it may haapen that not 
 as it is not completely developed but developed enough to prove the concept.
 
 # Screenshots
-<img src="images/Screenshot_1.jpg" width="200">
-<img src="images/Screenshot_2.jpg" width="200">
-<img src="images/Screenshot_3.jpg" width="200">
-<img src="images/Screenshot_4.jpg" width="200">
-<img src="images/Screenshot_5.jpg" width="200">
-<img src="images/Screenshot_6.jpg" width="200">
-<img src="images/Screenshot_7.jpg" width="200">
-
+<img src="images/Screenshot_1.jpg" width="25%">
+<img src="images/Screenshot_2.jpg" width="25%">
+<img src="images/Screenshot_3.jpg" width="25%">
+<img src="images/Screenshot_4.jpg" width="25%">
+<img src="images/Screenshot_5.jpg" width="25%">
+<img src="images/Screenshot_6.jpg" width="25%">
+<img src="images/Screenshot_7.jpg" width="25%">
