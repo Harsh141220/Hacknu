@@ -1,3 +1,9 @@
+/*
+
+This page is responsible to show the booked ticket with starting, itermediate and end stations.
+
+*/ 
+
 import 'package:delhimetro/content.dart';
 import 'package:delhimetro/model.dart';
 import 'package:flutter/material.dart';
@@ -109,16 +115,6 @@ class _TicketConfirmedState extends State<TicketConfirmed> {
               ListTile(
                 title: Text(
                   'Slot alloted: ${widget.ticket.time}',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 18, color: Colors.white),
-                ),
-              ),
-
-
-
-              ListTile(
-                title: Text(
-                  'Estimated time : 20 mins',
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),

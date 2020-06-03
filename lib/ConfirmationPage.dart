@@ -1,3 +1,16 @@
+/*
+
+This page is responsible for confirming the time slot and also connect with servers on host's IP.
+You may change the IP based on your preference or use the predefined, however the IP may be subject to changes as the IP
+on Google Cloud Platform changes every 24hrs.
+
+If using local host for starting server -- app.py (can be found in this repo).
+got to "~./server" and type command "python app.py" or "python3 app.py". The server will then start.
+Change the IPv4 in this code and also in the server and set port 8080.
+After setting up the IP in both code then only run the flutter code using "flutter run"
+
+*/
+
 import 'package:delhimetro/TicketConfirmed.dart';
 import 'package:delhimetro/content.dart';
 import 'package:delhimetro/global.dart';
@@ -5,7 +18,6 @@ import 'package:delhimetro/model.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 import 'dart:io';
-import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:progress_dialog/progress_dialog.dart';
 
@@ -36,7 +48,9 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
 
   @override
   Widget build(BuildContext context) {
-
+    /*
+    Progress Dialog to display "Please Wait..." dialog. 
+    */ 
     ProgressDialog pr = ProgressDialog(context,
         type: ProgressDialogType.Normal, isDismissible: false, showLogs: true);
     pr.style(
@@ -56,13 +70,16 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
         messageTextStyle: TextStyle(
             color: Colors.white, fontSize: 19.0, fontWeight: FontWeight.w600));
 
-
+    /*Main code*/ 
+    
     return SafeArea(
       child: Scaffold(
         body: Container(
           child: Stack(
             children: <Widget>[
 
+              /*Top blue background where to and from stations are displayed */
+              
               Align(
                 alignment: Alignment.topCenter,
                 child: Container(
@@ -94,17 +111,22 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                   ),
                 ),
                 ),
-
+                
+                /*Show bottom card*/ 
+                
                 Align(
                   alignment: Alignment.topLeft,
                   child: _buildBottomCard(context,pr)
                 ),
+            
             ],
           ),
         ),
       ),
       );
   }
+
+
     Widget _buildBottomCard(context,pr){
     return Container(
                 padding: EdgeInsets.only(left: 20, bottom: 20, right: 20, top: 20),
@@ -148,6 +170,8 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                 )
               );
   }
+
+  // Building each time slot to reduce boilerplate code
   Widget builldSlotTile(String time,BuildContext context, pr){
     return Container(
       margin: EdgeInsets.only(left:5.0,right:5.0),
@@ -165,12 +189,20 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
     );
   }
 
-  
+  /*
+  This future is a function which will be responsible to conect to the server running at IP set by user.
+
+  */ 
+
   Future getConnection(context,pr,t) async {
     String s;
 
     // Show please wait dialog
     pr.show();
+
+    /*
+    Getting the start and end station id from station names that are hard coded in 'content.dart' and vice versa
+    */ 
 
     String startCode;
     (Content().mapAllStations[widget.start] is List) ? startCode = Content().mapAllStations[widget.start][0] : startCode = Content().mapAllStations[widget.start];
@@ -179,24 +211,40 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
     String time = t;
     String body = "$startCode,$endCode,$time";
 
-/*Enter your pi address and port*/
+    /*
 
-    Socket.connect("192.168.1.105", 8080).then((socket) {
+
+    Enter your IPv4 address and port
+
+    Socket.connect("IPv4 here", Keep port 8080)
+
+    */
+
+    Socket.connect("34.71.233.212", 8080).then((socket) {
       print('Connected to: '
           '${socket.remoteAddress.address}:${socket.remotePort}');
       print("body data:\n" + body.toString() + "\n");
+
       //Send the request
       socket.write(body);
+
       //Establish the onData, and onDone callbacks
       socket.listen((data) {
+
         s = utf8.decode(data);
         print("Response:\n" + s.toString());
         pr.hide();
+
         // Close Please wait dialog
+
         showResult(context, s,time);
-      }, onDone: () {
+
+      }, 
+      onDone: () {
+
         print("Done");
         socket.destroy();
+
       });
     });
   }
@@ -204,22 +252,17 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
 
   Future showResult(BuildContext context, String result,String t) {
 
-
-    // result = "yes,y13,m01";
-    // result = "yes,y13";
-    // result = "yes";
-
     var array = result.split(',');
-
-    // result.codeUnits.map((e){
-    //   return new String.fromCharCode(e);
-    // }).toList();
-
     int responseInt = array.length;
 
     print("ResultList: \n"+array.toString());
 
-    print("\nVAlid: \n"+array[0]);
+    /*
+
+    TicketDetail is the model which will hold all the needed details from 
+    the server and it becomes easy to call these values from a model
+    
+    */ 
 
     if(responseInt == 1){
 
@@ -255,7 +298,9 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
       );
     }
 
-      // print("Valid or not\n"+model.valid.toString());
+    /*
+    Alert Dialog to display if the ticket is booked or not
+    */ 
 
     var alert = AlertDialog(
       title:
@@ -269,6 +314,9 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
                 style: TextStyle(color: Colors.blue),
               ),
               onPressed: () {
+
+                /*  Check if ticket is booked and then move to confirmed ticket page, else close the current dialog*/ 
+
                 model.valid == "yes" ? Navigator.push(context, new MaterialPageRoute(builder: (_) => new TicketConfirmed(ticket : model,))) : 
                 Navigator.of(context).pop();
               },
@@ -279,6 +327,4 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
     );
     return showDialog(context: context, builder: (context) => alert);
   }
-
-
 }

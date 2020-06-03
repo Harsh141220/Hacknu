@@ -24,7 +24,7 @@ class _EndStationPageState extends State<EndStationPage> {
       
       child:Scaffold(
         appBar: AppBar(
-          title: Text("Select Starting Station"),
+          title: Text("Select Destination Station"),
         ),
         body: ListView.builder(
           padding: EdgeInsets.all(20.0),

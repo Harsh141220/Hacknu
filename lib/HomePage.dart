@@ -1,5 +1,12 @@
-import 'dart:ui';
+/*
 
+This page is responsble for showing the Home Page where 
+all the starting and eding station willl be selected by the user.
+The data will be then sent to next page for selecting slots.
+
+*/
+
+import 'dart:ui';
 import 'package:delhimetro/ConfirmationPage.dart';
 import 'package:delhimetro/StartStationPage.dart';
 import 'package:delhimetro/global.dart';
@@ -29,6 +36,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   int currentTab = 0; // to keep track of active tab index
+
+  // For now we are using same screen on all tabs
   final List<Widget> screens = [
     HomePage(),
     HomePage(),
@@ -36,7 +45,7 @@ class _HomePageState extends State<HomePage> {
     HomePage(),
   ]; 
   final PageStorageBucket bucket = PageStorageBucket();
-  Widget currentScreen = HomePage(); //
+  Widget currentScreen = HomePage();
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +63,8 @@ class _HomePageState extends State<HomePage> {
         body: Container(
           child: Stack(
             children: <Widget>[
+
+              /*Backend image of delhi metro*/
               
               Align(
                 alignment: Alignment.topCenter,
@@ -82,7 +93,7 @@ class _HomePageState extends State<HomePage> {
             ],),
         ),
 
-
+        /* Bottom navigation bar */
         bottomNavigationBar: BottomAppBar(
           shape: CircularNotchedRectangle(),
           notchMargin: 10,
@@ -208,32 +219,18 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
 
-
-
       ),
     );
   }
 
 
+  /*Bottom floating card where starting and end station has to be entered*/
+  
   Widget _buildBottomCard(){
     return Container(
-                // padding: EdgeInsets.only(left: 20, bottom: 20, right: 20, top: 60),
-                // margin: EdgeInsets.only(top: 350),
-                // constraints: BoxConstraints.expand(height: MediaQuery.of(context).size.height - 350),
-                // decoration: BoxDecoration(
-                //   // color: Color(0xFFBAC4DE),
-                //   color: Color(0xFFFFFFFF),
-                //   borderRadius: BorderRadius.only(
-                //     topLeft: Radius.circular(30), 
-                //     topRight: Radius.circular(30)
-                //   ),
-                // ),
                 child: 
                 Wrap(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-
                     _buildStationCard(),
 
                     Container(
@@ -343,6 +340,7 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+  
   void pushtoPage(){
     Navigator.push(context, 
       MaterialPageRoute(
