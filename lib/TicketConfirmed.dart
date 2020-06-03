@@ -94,13 +94,15 @@ class _TicketConfirmedState extends State<TicketConfirmed> {
                 size: 30.0,
               ),
               
-               inter1exists ? _buildIntermediate(inter1.toString()) : _buildIntermediate(widget.ticket.end),
+               inter1exists ? _buildTrainStation(inter1.toString()) 
+               
+               : _buildTrainStation(widget.ticket.end),
                inter1exists ? _buildIcon() : Container(),
 
-               inter2exists ? _buildIntermediate(inter2.toString()) : _buildIntermediate(widget.ticket.end),
+               inter2exists  ? _buildTrainStation(inter2.toString()) : inter1exists ? _buildTrainStation(widget.ticket.end) : Container(),
                inter2exists ? _buildIcon() : Container(),
 
-              (inter1exists == true && inter2exists == true) ? _buildIntermediate(widget.ticket.end):Container(),
+              (inter1exists == true && inter2exists == true) ? _buildTrainStation(widget.ticket.end):Container(),
               
 
 
@@ -129,7 +131,7 @@ class _TicketConfirmedState extends State<TicketConfirmed> {
     );
   }
 
-  Widget _buildIntermediate(String station){
+  Widget _buildTrainStation(String station){
     return ListTile(
                 title: Text(
                   station ?? "",

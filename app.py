@@ -10,7 +10,7 @@ default_app=firebase_admin.initialize_app(cred)
 intersec={"y":["m13,14","b22,22"],"m":["y14,13","b01,09"],"b":["m09,01","y22,22"]}
 
 def start_server():
-   host = "192.168.1.102"
+   host = "192.168.1.105"
    print(host)
    port = 8080
    soc = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

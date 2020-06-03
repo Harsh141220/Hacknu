@@ -18,7 +18,7 @@ class ConfirmationPage extends StatefulWidget {
   _ConfirmationPageState createState() => _ConfirmationPageState();
 }
 
-const String HOST = "192.168.1.102";
+const String HOST = "192.168.1.105";
 const int PORT = 8080;
 
 class _ConfirmationPageState extends State<ConfirmationPage> {
@@ -178,7 +178,10 @@ class _ConfirmationPageState extends State<ConfirmationPage> {
     (Content().mapAllStations[widget.end] is List) ? endCode = Content().mapAllStations[widget.end][0] : endCode = Content().mapAllStations[widget.end];
     String time = t;
     String body = "$startCode,$endCode,$time";
-    Socket.connect("$HOST", PORT).then((socket) {
+
+/*Enter your pi address and port*/
+
+    Socket.connect("192.168.1.105", 8080).then((socket) {
       print('Connected to: '
           '${socket.remoteAddress.address}:${socket.remotePort}');
       print("body data:\n" + body.toString() + "\n");
